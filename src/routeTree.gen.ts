@@ -9,50 +9,185 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as HomeRouteRouteImport } from './routes/_home/route'
+import { Route as HomeIndexRouteImport } from './routes/_home/index'
+import { Route as HomeConfiguracionesRouteImport } from './routes/_home/configuraciones'
+import { Route as HomePacientesRouteImport } from './routes/_home/pacientes'
+import { Route as HomeRolesPermisosRouteImport } from './routes/_home/roles-permisos'
+import { Route as HomeWiscVRouteImport } from './routes/_home/wisc-v'
+import { Route as HomeWpsiiIiiRouteImport } from './routes/_home/wpsii-iii'
 
-const IndexRoute = IndexRouteImport.update({
+const HomeRouteRoute = HomeRouteRouteImport.update({
+  id: '/_home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeIndexRoute = HomeIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeConfiguracionesRoute = HomeConfiguracionesRouteImport.update({
+  id: '/configuraciones',
+  path: '/configuraciones',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomePacientesRoute = HomePacientesRouteImport.update({
+  id: '/pacientes',
+  path: '/pacientes',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeRolesPermisosRoute = HomeRolesPermisosRouteImport.update({
+  id: '/roles-permisos',
+  path: '/roles-permisos',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeWiscVRoute = HomeWiscVRouteImport.update({
+  id: '/wisc-v',
+  path: '/wisc-v',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeWpsiiIiiRoute = HomeWpsiiIiiRouteImport.update({
+  id: '/wpsii-iii',
+  path: '/wpsii-iii',
+  getParentRoute: () => HomeRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof HomeIndexRoute
+  '/configuraciones': typeof HomeConfiguracionesRoute
+  '/pacientes': typeof HomePacientesRoute
+  '/roles-permisos': typeof HomeRolesPermisosRoute
+  '/wisc-v': typeof HomeWiscVRoute
+  '/wpsii-iii': typeof HomeWpsiiIiiRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/configuraciones': typeof HomeConfiguracionesRoute
+  '/pacientes': typeof HomePacientesRoute
+  '/roles-permisos': typeof HomeRolesPermisosRoute
+  '/wisc-v': typeof HomeWiscVRoute
+  '/wpsii-iii': typeof HomeWpsiiIiiRoute
+  '/': typeof HomeIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_home': typeof HomeRouteRouteWithChildren
+  '/_home/configuraciones': typeof HomeConfiguracionesRoute
+  '/_home/pacientes': typeof HomePacientesRoute
+  '/_home/roles-permisos': typeof HomeRolesPermisosRoute
+  '/_home/wisc-v': typeof HomeWiscVRoute
+  '/_home/wpsii-iii': typeof HomeWpsiiIiiRoute
+  '/_home/': typeof HomeIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/configuraciones'
+    | '/pacientes'
+    | '/roles-permisos'
+    | '/wisc-v'
+    | '/wpsii-iii'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/configuraciones'
+    | '/pacientes'
+    | '/roles-permisos'
+    | '/wisc-v'
+    | '/wpsii-iii'
+    | '/'
+  id:
+    | '__root__'
+    | '/_home'
+    | '/_home/configuraciones'
+    | '/_home/pacientes'
+    | '/_home/roles-permisos'
+    | '/_home/wisc-v'
+    | '/_home/wpsii-iii'
+    | '/_home/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  HomeRouteRoute: typeof HomeRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_home': {
+      id: '/_home'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof HomeRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_home/': {
+      id: '/_home/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof HomeIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/_home/configuraciones': {
+      id: '/_home/configuraciones'
+      path: '/configuraciones'
+      fullPath: '/configuraciones'
+      preLoaderRoute: typeof HomeConfiguracionesRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/_home/pacientes': {
+      id: '/_home/pacientes'
+      path: '/pacientes'
+      fullPath: '/pacientes'
+      preLoaderRoute: typeof HomePacientesRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/_home/roles-permisos': {
+      id: '/_home/roles-permisos'
+      path: '/roles-permisos'
+      fullPath: '/roles-permisos'
+      preLoaderRoute: typeof HomeRolesPermisosRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/_home/wisc-v': {
+      id: '/_home/wisc-v'
+      path: '/wisc-v'
+      fullPath: '/wisc-v'
+      preLoaderRoute: typeof HomeWiscVRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/_home/wpsii-iii': {
+      id: '/_home/wpsii-iii'
+      path: '/wpsii-iii'
+      fullPath: '/wpsii-iii'
+      preLoaderRoute: typeof HomeWpsiiIiiRouteImport
+      parentRoute: typeof HomeRouteRoute
     }
   }
 }
 
+interface HomeRouteRouteChildren {
+  HomeConfiguracionesRoute: typeof HomeConfiguracionesRoute
+  HomePacientesRoute: typeof HomePacientesRoute
+  HomeRolesPermisosRoute: typeof HomeRolesPermisosRoute
+  HomeWiscVRoute: typeof HomeWiscVRoute
+  HomeWpsiiIiiRoute: typeof HomeWpsiiIiiRoute
+  HomeIndexRoute: typeof HomeIndexRoute
+}
+
+const HomeRouteRouteChildren: HomeRouteRouteChildren = {
+  HomeConfiguracionesRoute: HomeConfiguracionesRoute,
+  HomePacientesRoute: HomePacientesRoute,
+  HomeRolesPermisosRoute: HomeRolesPermisosRoute,
+  HomeWiscVRoute: HomeWiscVRoute,
+  HomeWpsiiIiiRoute: HomeWpsiiIiiRoute,
+  HomeIndexRoute: HomeIndexRoute,
+}
+
+const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
+  HomeRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  HomeRouteRoute: HomeRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
