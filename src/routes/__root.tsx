@@ -1,6 +1,9 @@
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router"
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
+
 import { TanStackDevtools } from "@tanstack/react-devtools"
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
+
+import { SolarProvider } from "@solar-icons/react/lib/SolarProvider"
 
 import stylesCss from "../styles.css?url"
 
@@ -21,19 +24,17 @@ export const Route = createRootRoute({
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
+      <head> <HeadContent /> </head>
 
       <body>
-        {children}
+        <SolarProvider strokeWidth={2.5}>
+          {children}
+        </SolarProvider>
 
-        <TanStackDevtools
-          plugins={[{
-              name: "Tanstack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-          }]}
-        />
+        <TanStackDevtools plugins={[{
+            name: "Tanstack Router",
+            render: <TanStackRouterDevtoolsPanel />,
+        }]}/>
 
         <Scripts />
       </body>

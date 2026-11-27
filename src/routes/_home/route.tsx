@@ -10,7 +10,7 @@ function RouteComponent() {
     <main className="flex h-dvh overflow-hidden">
       <Sidebar />
 
-      <div className="min-w-0 flex-1 overflow-y-auto p-4"> <Outlet /> </div>
+      <div className="min-w-0 flex-1 overflow-y-auto px-4 py-3"> <Outlet /> </div>
     </main>
   )
 }
