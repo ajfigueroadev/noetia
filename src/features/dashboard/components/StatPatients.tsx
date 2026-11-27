@@ -19,13 +19,13 @@ const ULTIMOS: Patient[] = [
 
 export function StatPatients() {
   return (
-    <section className="flex flex-col gap-6 rounded-md border border-muted bg-card p-3">
-      <header className="flex flex-col gap-1">
+    <section className="flex flex-col rounded-md border border-muted bg-secondary">
+      <div className="space-y-1 p-3">
         <h2 className="text-sm font-semibold">Últimos pacientes atendidos</h2>
         <p className="text-xs text-muted-foreground">Las 5 evaluaciones más recientes</p>
-      </header>
+      </div>
 
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 bg-white rounded-md p-3 gap-4">
         {ULTIMOS.map((patient) => <PatientCard patient={patient}/>)}
       </div>
     </section>

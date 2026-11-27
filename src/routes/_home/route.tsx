@@ -2,15 +2,13 @@ import { Sidebar } from '@/components/Sidebar'
 import { createFileRoute, Outlet } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/_home')({
-  component: RouteComponent,
+  component: () => {
+    return (
+      <main className="flex h-dvh overflow-hidden">
+        <Sidebar />
+
+        <div className="min-w-0 flex-1 overflow-y-auto px-4 py-3"> <Outlet /> </div>
+      </main>
+    )
+  },
 })
-
-function RouteComponent() {
-  return (
-    <main className="flex h-dvh overflow-hidden">
-      <Sidebar />
-
-      <div className="min-w-0 flex-1 overflow-y-auto px-4 py-3"> <Outlet /> </div>
-    </main>
-  )
-}

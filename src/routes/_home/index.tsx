@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router"
 
+import { Button } from "@/components/ui/button";
+
 import { StatCard } from "@/features/dashboard/components/StatCard";
 import { StatPatients } from "@/features/dashboard/components/StatPatients";
 import { AnnualChart } from "@/features/dashboard/components/AnnualChart";
-import { Button } from "@/components/ui/button";
+
+import { AltArrowRightIcon } from "@solar-icons/react/linear";
 
 export const Route = createFileRoute("/_home/")({ component: Dashboard });
 
@@ -12,14 +15,18 @@ function Dashboard() {
     <section className="grid grid-cols-1 gap-3">
       <header className="flex items-center justify-between">
         <div className="flex flex-col gap-1">
-          <h1 className="text-base font-extrabold">Dashboard</h1>
-          <p className="text-xs text-muted-foreground">Bienvenido de vuelta, Alejandro Sanchez!</p>
+          <h1 className="flex gap-1 items-center text-base font-extrabold">
+            Dashboard <AltArrowRightIcon className="size-3.5" /> Resumen
+          </h1>
+          <p className="text-xs text-muted-foreground">
+            Bienvenido de vuelta, Alejandro Sanchez!
+          </p>
         </div>
 
         <Button variant={'default'} size={'sm'}>Personalizar Widgets</Button>
       </header>
 
-        <div className="grid grid-cols-4 gap-2 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
           <StatCard
             label="Pacientes"
             value={128}

@@ -10,20 +10,20 @@ export function AnnualChart() {
   const total = ATENDIDOS.reduce<number>((sum, n) => sum + (n ?? 0), 0)
 
   return (
-    <section className="rounded-md border border-muted bg-card p-3">
-      <header className="flex items-start justify-between gap-4">
-        <div>
+    <section className="rounded-md border border-muted bg-secondary">
+      <header className="flex items-start justify-between gap-4 px-3 py-2">
+        <div className="space-y-1">
           <h2 className="text-sm font-semibold">Pacientes atendidos</h2>
           <p className="text-xs text-muted-foreground">Por mes durante 2026</p>
         </div>
 
-        <div className="text-right">
-          <p className="text-lg font-semibold tabular-nums">{total}</p>
+        <div className="space-y-1 text-right">
+          <p className="text-sm font-semibold tabular-nums">{total}</p>
           <p className="text-xs text-muted-foreground">en lo que va del año</p>
         </div>
       </header>
 
-      <div className="mt-4 flex gap-3">
+      <div className="flex gap-3 bg-white rounded-md p-3">
         <div
           aria-hidden
           className="flex h-56 flex-col justify-between text-xs tabular-nums text-muted-foreground"

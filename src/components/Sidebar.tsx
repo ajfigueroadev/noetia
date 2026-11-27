@@ -3,15 +3,22 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar'
 
-import { Home2Icon, MedicalKitIcon, FileTextIcon, SettingsIcon, KeyIcon, DocumentIcon, PanelLeftIcon } from '@solar-icons/react/linear'
+import {
+  Home2Icon as HomeBold,
+  MedicalKitIcon as MedicalBold,
+  FileTextIcon as FileTextBold,
+  KeyIcon as KeyBold,
+  Document2Icon as DocumentBold,
+  PanelLeftIcon, SettingsIcon,
+} from '@solar-icons/react/bold'
 
 export function Sidebar() {
   return (
-    <aside className="flex flex-col h-dvh w-52 shrink-0 border-r border-muted p-3 bg-secondary/40">
+    <aside className="flex flex-col h-dvh w-52 shrink-0 border-r border-muted bg-secondary p-3">
       <header className="flex justify-between items-center w-full">
         <h1 className="text-xl font-extrabold">Noetia.</h1>
 
-        <Button variant={'ghost'}>
+        <Button variant={'outline'}>
           <PanelLeftIcon/>
         </Button>
       </header>
@@ -28,7 +35,8 @@ export function Sidebar() {
                 variant={isActive ? "default" : "ghost"}
                 className={'justify-start w-full'}
               >
-                <Home2Icon /> Dashboard
+                <HomeBold />
+                Dashboard
               </Button>
             )}
           </Link>
@@ -39,14 +47,15 @@ export function Sidebar() {
                 variant={isActive ? "default" : "ghost"}
                 className={'justify-start w-full'}
               >
-                <MedicalKitIcon /> Pacientes
+                <MedicalBold />
+                Pacientes
               </Button>
             )}
           </Link>
         </section>
 
         {/* Seccion de la barra lateral (Pruebas) */}
-        <section className="flex flex-col gap-1 w-full">
+        <section className="flex flex-col gap-1 border-t pt-4 w-full">
           <h2 className="text-xs font-medium mb-1">Pruebas Psicometricas</h2>
 
           <Link to="/wisc-v">
@@ -55,7 +64,8 @@ export function Sidebar() {
                 variant={isActive ? "default" : "ghost"}
                 className={'justify-start w-full'}
               >
-                <FileTextIcon /> Wisc-V
+                <FileTextBold />
+                Wisc-V
               </Button>
             )}
           </Link>
@@ -66,14 +76,15 @@ export function Sidebar() {
                 variant={isActive ? "default" : "ghost"}
                 className={'justify-start w-full'}
               >
-                <FileTextIcon /> Wpssi-III
+                <FileTextBold />
+                Wpssi-III
               </Button>
             )}
           </Link>
         </section>
 
         {/* Seccion de la barra lateral (Administración) */}
-        <section className="flex flex-col gap-1 w-full">
+        <section className="flex flex-col gap-1 border-t pt-4 w-full">
           <h2 className="text-xs font-medium mb-1">Administraciónes</h2>
 
           <Link to="/roles-permisos">
@@ -82,7 +93,8 @@ export function Sidebar() {
                 variant={isActive ? "default" : "ghost"}
                 className={'justify-start w-full'}
               >
-                <KeyIcon /> Roles & Permisos
+                <KeyBold />
+                Roles & Permisos
               </Button>
             )}
           </Link>
@@ -93,7 +105,8 @@ export function Sidebar() {
                 variant={isActive ? "default" : "ghost"}
                 className={'justify-start w-full'}
               >
-                <SettingsIcon /> Configuraciones
+                <SettingsIcon />
+                Configuraciones
               </Button>
             )}
           </Link>
@@ -104,22 +117,26 @@ export function Sidebar() {
                 variant={isActive ? "default" : "ghost"}
                 className={'justify-start w-full'}
               >
-                <DocumentIcon /> Ayuda & Recursos
+                <DocumentBold />
+                Ayuda & Recursos
               </Button>
             )}
           </Link>
         </section>
       </section>
 
-      <footer className="flex mt-auto items-center gap-3 w-full">
+      <footer className="flex flex-col mt-auto gap-3 w-full">
         {/* Perfil de usuario conectado */}
-        <section className="flex flex-row gap-3 w-full items-center">
-          <Avatar size="sm">
-            <AvatarImage src="https://i.pinimg.com/736x/ae/32/35/ae32350bccaf286509ffa3bcd989c906.jpg"/>
+        <section className="flex gap-3 w-full items-center">
+          <Avatar>
+            <AvatarImage src="https://i.pinimg.com/736x/2b/d7/77/2bd777d7c47d056106d238c8cc2724de.jpg"/>
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
 
-          <p className="text-xs font-semibold truncate">Rizzy Rosales</p>
+          <div className="space-y-0.5">
+            <p className="text-xs font-semibold truncate">Roxy Miguardia</p>
+            <p className="text-xs text-muted-foreground">Administradora</p>
+          </div>
         </section>
       </footer>
     </aside>
