@@ -15,7 +15,8 @@ import { Route as HomeConfiguracionesRouteImport } from './routes/_home/configur
 import { Route as HomePacientesRouteImport } from './routes/_home/pacientes'
 import { Route as HomeRolesPermisosRouteImport } from './routes/_home/roles-permisos'
 import { Route as HomeWiscVRouteImport } from './routes/_home/wisc-v'
-import { Route as HomeWpsiiIiiRouteImport } from './routes/_home/wpsii-iii'
+import { Route as HomeWpsiiIiiIndexRouteImport } from './routes/_home/wpsii-iii.index'
+import { Route as HomeWpsiiIiiPruebaRouteImport } from './routes/_home/wpsii-iii.prueba'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/_home',
@@ -46,9 +47,14 @@ const HomeWiscVRoute = HomeWiscVRouteImport.update({
   path: '/wisc-v',
   getParentRoute: () => HomeRouteRoute,
 } as any)
-const HomeWpsiiIiiRoute = HomeWpsiiIiiRouteImport.update({
-  id: '/wpsii-iii',
-  path: '/wpsii-iii',
+const HomeWpsiiIiiIndexRoute = HomeWpsiiIiiIndexRouteImport.update({
+  id: '/wpsii-iii/',
+  path: '/wpsii-iii/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeWpsiiIiiPruebaRoute = HomeWpsiiIiiPruebaRouteImport.update({
+  id: '/wpsii-iii/prueba',
+  path: '/wpsii-iii/prueba',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 
@@ -58,15 +64,17 @@ export interface FileRoutesByFullPath {
   '/pacientes': typeof HomePacientesRoute
   '/roles-permisos': typeof HomeRolesPermisosRoute
   '/wisc-v': typeof HomeWiscVRoute
-  '/wpsii-iii': typeof HomeWpsiiIiiRoute
+  '/wpsii-iii/prueba': typeof HomeWpsiiIiiPruebaRoute
+  '/wpsii-iii/': typeof HomeWpsiiIiiIndexRoute
 }
 export interface FileRoutesByTo {
   '/configuraciones': typeof HomeConfiguracionesRoute
   '/pacientes': typeof HomePacientesRoute
   '/roles-permisos': typeof HomeRolesPermisosRoute
   '/wisc-v': typeof HomeWiscVRoute
-  '/wpsii-iii': typeof HomeWpsiiIiiRoute
   '/': typeof HomeIndexRoute
+  '/wpsii-iii/prueba': typeof HomeWpsiiIiiPruebaRoute
+  '/wpsii-iii': typeof HomeWpsiiIiiIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -75,8 +83,9 @@ export interface FileRoutesById {
   '/_home/pacientes': typeof HomePacientesRoute
   '/_home/roles-permisos': typeof HomeRolesPermisosRoute
   '/_home/wisc-v': typeof HomeWiscVRoute
-  '/_home/wpsii-iii': typeof HomeWpsiiIiiRoute
   '/_home/': typeof HomeIndexRoute
+  '/_home/wpsii-iii/prueba': typeof HomeWpsiiIiiPruebaRoute
+  '/_home/wpsii-iii/': typeof HomeWpsiiIiiIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -86,15 +95,17 @@ export interface FileRouteTypes {
     | '/pacientes'
     | '/roles-permisos'
     | '/wisc-v'
-    | '/wpsii-iii'
+    | '/wpsii-iii/prueba'
+    | '/wpsii-iii/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/configuraciones'
     | '/pacientes'
     | '/roles-permisos'
     | '/wisc-v'
-    | '/wpsii-iii'
     | '/'
+    | '/wpsii-iii/prueba'
+    | '/wpsii-iii'
   id:
     | '__root__'
     | '/_home'
@@ -102,8 +113,9 @@ export interface FileRouteTypes {
     | '/_home/pacientes'
     | '/_home/roles-permisos'
     | '/_home/wisc-v'
-    | '/_home/wpsii-iii'
     | '/_home/'
+    | '/_home/wpsii-iii/prueba'
+    | '/_home/wpsii-iii/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -154,11 +166,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeWiscVRouteImport
       parentRoute: typeof HomeRouteRoute
     }
-    '/_home/wpsii-iii': {
-      id: '/_home/wpsii-iii'
+    '/_home/wpsii-iii/': {
+      id: '/_home/wpsii-iii/'
       path: '/wpsii-iii'
-      fullPath: '/wpsii-iii'
-      preLoaderRoute: typeof HomeWpsiiIiiRouteImport
+      fullPath: '/wpsii-iii/'
+      preLoaderRoute: typeof HomeWpsiiIiiIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/_home/wpsii-iii/prueba': {
+      id: '/_home/wpsii-iii/prueba'
+      path: '/wpsii-iii/prueba'
+      fullPath: '/wpsii-iii/prueba'
+      preLoaderRoute: typeof HomeWpsiiIiiPruebaRouteImport
       parentRoute: typeof HomeRouteRoute
     }
   }
@@ -169,8 +188,9 @@ interface HomeRouteRouteChildren {
   HomePacientesRoute: typeof HomePacientesRoute
   HomeRolesPermisosRoute: typeof HomeRolesPermisosRoute
   HomeWiscVRoute: typeof HomeWiscVRoute
-  HomeWpsiiIiiRoute: typeof HomeWpsiiIiiRoute
   HomeIndexRoute: typeof HomeIndexRoute
+  HomeWpsiiIiiPruebaRoute: typeof HomeWpsiiIiiPruebaRoute
+  HomeWpsiiIiiIndexRoute: typeof HomeWpsiiIiiIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
@@ -178,8 +198,9 @@ const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomePacientesRoute: HomePacientesRoute,
   HomeRolesPermisosRoute: HomeRolesPermisosRoute,
   HomeWiscVRoute: HomeWiscVRoute,
-  HomeWpsiiIiiRoute: HomeWpsiiIiiRoute,
   HomeIndexRoute: HomeIndexRoute,
+  HomeWpsiiIiiPruebaRoute: HomeWpsiiIiiPruebaRoute,
+  HomeWpsiiIiiIndexRoute: HomeWpsiiIiiIndexRoute,
 }
 
 const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(

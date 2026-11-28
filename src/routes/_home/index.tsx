@@ -14,9 +14,9 @@ function Dashboard() {
   return (
     <section className="grid grid-cols-1 gap-3">
       <header className="flex items-center justify-between">
-        <div className="flex flex-col gap-1">
+        <div className="space-y-2">
           <h1 className="flex gap-1 items-center text-base font-extrabold">
-            Dashboard <AltArrowRightIcon className="size-3.5" /> Resumen
+            Dashboard <AltArrowRightIcon className="size-3" /> Resumen
           </h1>
           <p className="text-xs text-muted-foreground">
             Bienvenido de vuelta, Alejandro Sanchez!
